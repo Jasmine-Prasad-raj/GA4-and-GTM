@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GA4 GTM Demo Website</title>
+</head>
+<body>
+  <h1>Welcome to My GA4 & GTM Demo Site</h1>
+  <button onclick="addToCart()">Add to Cart</button>
+
+  <script>
+    function addToCart() {
+      // Simulated action
+      console.log("Item added to cart");
+
+      // Push event to dataLayer
+      window.dataLayer = window.dataLayer || [];
+      dataLayer.push({
+        event: 'add_to_cart',
+        item_name: 'Demo Product',
+        item_price: 299
+      });
+    }
+  </script>
+</body>
+</html>
