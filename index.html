@@ -1,23 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>GA4 GTM Demo Website</title>
+  <meta charset="UTF-8">
+  <title>Mini eCommerce Demo Site</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Insert your GA4 or GTM script here -->
+
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .product { border: 1px solid #ccc; padding: 10px; margin: 10px 0; }
+    button { margin: 5px; }
+  </style>
 </head>
 <body>
-  <h1>Welcome to My GA4 & GTM Demo Site</h1>
-  <button onclick="addToCart()">Add to Cart</button>
+  <h1>Welcome to Demo Store</h1>
+  <p>Simulate a user journey for analytics testing</p>
+
+  <div class="product" id="product1">
+    <h3>Product A</h3>
+    <p>Price: ₹999</p>
+    <button onclick="viewItem('Product A', 999)">View Item</button>
+    <button onclick="addToCart('Product A', 999)">Add to Cart</button>
+    <button onclick="purchase('Product A', 999)">Purchase</button>
+  </div>
+
+  <div class="product" id="product2">
+    <h3>Product B</h3>
+    <p>Price: ₹1499</p>
+    <button onclick="viewItem('Product B', 1499)">View Item</button>
+    <button onclick="addToCart('Product B', 1499)">Add to Cart</button>
+    <button onclick="purchase('Product B', 1499)">Purchase</button>
+  </div>
 
   <script>
-    function addToCart() {
-      // Simulated action
-      console.log("Item added to cart");
+    window.dataLayer = window.dataLayer || [];
 
-      // Push event to dataLayer
-      window.dataLayer = window.dataLayer || [];
+    function viewItem(name, price) {
+      console.log("Viewed item:", name);
       dataLayer.push({
-        event: 'add_to_cart',
-        item_name: 'Demo Product',
-        item_price: 299
+        event: "view_item",
+        ecommerce: {
+          items: [{ item_name: name, price: price }]
+        }
+      });
+    }
+
+    function addToCart(name, price) {
+      console.log("Added to cart:", name);
+      dataLayer.push({
+        event: "add_to_cart",
+        ecommerce: {
+          items: [{ item_name: name, price: price }]
+        }
+      });
+    }
+
+    function purchase(name, price) {
+      console.log("Purchase:", name);
+      dataLayer.push({
+        event: "purchase",
+        ecommerce: {
+          transaction_id: "T" + Math.floor(Math.random() * 100000),
+          value: price,
+          currency: "INR",
+          items: [{ item_name: name, price: price }]
+        }
       });
     }
   </script>
