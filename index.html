@@ -54,16 +54,18 @@
       ></iframe>
     </section>
 
-    <section id="contact">
-      <h2>Contact Us</h2>
-      <form id="contactForm" action="contact.php" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" placeholder="Your Message" required></textarea>
-        <button type="submit" onclick="trackFormSubmission()">Send</button>
-      </form>
-      <p id="formMsg"></p>
-    </section>
+    <section id="contact" class="contact">
+  <div class="container">
+    <h2>Contact Us</h2>
+    <form name="contact" method="POST" data-netlify="true">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
   </main>
 
   <footer>
@@ -73,3 +75,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
